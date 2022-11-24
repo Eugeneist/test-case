@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -7,11 +7,8 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-import { PostProps } from "../../interfaces/interfaces"
-
+import { PostProps } from '../../interfaces/interfaces';
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -28,25 +25,27 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }));
 
-const Post:React.FC<PostProps>= ({userId, title, body}):any => {
-
+const Post: React.FC<PostProps> = ({ userId, title, body }): any => {
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-    return (
-      
-        <Card variant="outlined" sx={{ width: "80%", margin: "0 auto", marginBottom: "30px", backgroundColor: "rgb(215, 201, 198)" }}>
-          <CardHeader
-          avatar={
-          <Avatar sx={{ bgcolor: "#2b2d42" }}>
-            {userId}
-          </Avatar>
-                }
-          action={
-            <ExpandMore
+  return (
+    <Card
+      variant="outlined"
+      sx={{
+        width: '80%',
+        margin: '0 auto',
+        marginBottom: '30px',
+        backgroundColor: '#b2a997',
+      }}
+    >
+      <CardHeader
+        avatar={<Avatar sx={{ bgColor: '#2d2b42' }} src="/broken-image.jpg" />}
+        action={
+          <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
             aria-expanded={expanded}
@@ -60,11 +59,13 @@ const Post:React.FC<PostProps>= ({userId, title, body}):any => {
       />
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography sx={{textAlign: "start"}} paragraph>{body}</Typography>
+          <Typography sx={{ textAlign: 'start' }} paragraph>
+            {body}
+          </Typography>
         </CardContent>
       </Collapse>
-      </Card>
-      );
-}
+    </Card>
+  );
+};
 
 export default Post;

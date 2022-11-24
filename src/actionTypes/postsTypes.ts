@@ -1,0 +1,2 @@
+export const ADD_TO_POSTS = 'ADD_TO_POSTS';
+export const ADD_TO_POSTS_RESPONSE = 'ADD_TO_POSTS_RESPONSE';

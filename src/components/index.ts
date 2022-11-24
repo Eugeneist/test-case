@@ -1,5 +1,9 @@
-export { PostList } from "./PostList"
-export { Post } from "./Post"
-export { Header } from "./Header"
-export { AirButton } from "./AirButton"
-export { Modal } from "./Modal"
+export { PostList } from './PostList';
+export { Post } from './Post';
+export { Header } from './Header';
+export { AirButton } from './AirButton';
+export { ModalComponent } from './ModalComponent';
+export { Form } from './Form';
+export { Loader } from './Loader';
+export { Error } from './Error';
+export { ErrorMessage } from './Form';
