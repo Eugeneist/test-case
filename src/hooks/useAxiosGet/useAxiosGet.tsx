@@ -13,7 +13,9 @@ const useAxiosGet = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`/posts`)
+      .get(`/posts`, {
+        params: { limit: 10, page: 1 },
+      })
       .then((data) => {
         dispatch(addToPosts(() => data));
       })

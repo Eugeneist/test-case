@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { PostListProps } from '../../interfaces/interfaces';
 import { Post } from '../Post';
 import { Loader } from '../Loader';

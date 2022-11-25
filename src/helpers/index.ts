@@ -1,1 +1,1 @@
-export {axios} from "./axios"
+export { axios } from './axios';

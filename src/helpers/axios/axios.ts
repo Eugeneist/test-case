@@ -1,12 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 
-
-const API = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com"
+const instance = axios.create({
+  baseURL: 'https://jsonplaceholder.typicode.com',
 });
 
-API.interceptors.response.use(function (response) {
+instance.interceptors.response.use(function (response) {
   return response.data;
 });
 
-export default API;
+export default instance;

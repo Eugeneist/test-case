@@ -35,6 +35,7 @@ const resolver: Resolver<FormValues> = async (values) => {
           },
           title: {
             type: 'required',
+            minLength: 3,
           },
           body: {
             type: 'required',
