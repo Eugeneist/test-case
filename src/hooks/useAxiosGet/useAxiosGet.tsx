@@ -13,7 +13,7 @@ const useAxiosGet = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`/posts`, {
+      .get(`/test-case`, {
         params: { limit: 10, page: 1 },
       })
       .then((data) => {

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
+  baseURL: 'https://my-json-server.typicode.com/Eugeneist',
 });
 
 instance.interceptors.response.use(function (response) {
