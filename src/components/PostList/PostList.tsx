@@ -1,24 +1,56 @@
-import { useState } from 'react';
 import { PostListProps } from '../../interfaces/interfaces';
 import { Post } from '../Post';
 import { Loader } from '../Loader';
+import { Error } from '../Error';
 import Table from '@mui/material/Table';
+import TableHead from '@mui/material/TableHead';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
+import Typography from '@mui/material/Typography';
 import { useAxiosGet } from '../../hooks';
 
-const PostList: any = (): any => {
-  const { state, isLoading } = useAxiosGet();
+const PostList = (): any => {
+  const { state, isLoading, error, setLimit, limit }: any = useAxiosGet();
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (error) {
+    return <Error />;
   }
 
   return (
     <TableContainer>
       <Table sx={{ minWidth: 650, borderSpacing: '30px' }}>
         <TableBody>
+          <TableHead
+            sx={{
+              display: 'flex',
+              alignContent: 'baseline',
+              justifyContent: 'center',
+              gap: '10px',
+              paddingBottom: '15px',
+            }}
+          >
+            <Typography variant="h6" gutterBottom>
+              Show me
+            </Typography>
+            <input
+              style={{
+                width: '5%',
+                height: '25px',
+                border: '2px solid #14213d',
+              }}
+              value={limit}
+              onChange={(event) => setLimit(event.target.value)}
+              type="number"
+            />
+            <Typography variant="h6" gutterBottom>
+              articles
+            </Typography>
+          </TableHead>
           {state.map((post: PostListProps) => (
             <TableRow
               key={post.id}

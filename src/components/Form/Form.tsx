@@ -75,11 +75,10 @@ const Form = ({ handleClose }: FormProps) => {
       <form
         style={{
           width: '80%',
-          height: '50%',
           display: 'flex',
           flexDirection: 'column',
           flexWrap: 'nowrap',
-          margin: 'auto',
+          margin: '0 auto',
           backgroundColor: '#cac5b1',
           color: '#14213d',
           fontSize: '19px',
@@ -87,7 +86,12 @@ const Form = ({ handleClose }: FormProps) => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <Box
-          sx={{ display: 'flex', gap: '40px', justifyContent: 'space-between' }}
+          sx={{
+            display: 'flex',
+            gap: { xs: '5px', md: '40px' },
+            justifyContent: 'space-between',
+            flexDirection: { xs: 'column', md: 'row' },
+          }}
         >
           <label style={{ paddingBottom: '20px' }}>
             First name:
@@ -123,7 +127,12 @@ const Form = ({ handleClose }: FormProps) => {
         </Box>
 
         <Box
-          sx={{ display: 'flex', gap: '40px', justifyContent: 'space-between' }}
+          sx={{
+            display: 'flex',
+            gap: '40px',
+            justifyContent: 'space-between',
+            flexDirection: { xs: 'column', md: 'row' },
+          }}
         >
           <label style={{ paddingBottom: '10px' }}>
             E-mail:
@@ -175,7 +184,7 @@ const Form = ({ handleClose }: FormProps) => {
           Article text:
         </label>
         <textarea
-          style={{ minHeight: '250px' }}
+          style={{ minHeight: '150px' }}
           {...register('body', {
             required: true,
             max: 1000,
@@ -198,7 +207,12 @@ const Form = ({ handleClose }: FormProps) => {
         </label>
 
         <Box
-          sx={{ display: 'flex', gap: '40px', justifyContent: 'space-between' }}
+          sx={{
+            display: 'flex',
+            gap: { xs: '5px', md: '40px' },
+            justifyContent: 'space-between',
+            flexDirection: { xs: 'column', md: 'row' },
+          }}
         >
           <button
             onClick={handleClose}
