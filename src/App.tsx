@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { NewsPage, NotFound, HeroPage } from './pages';
+import { NewsPage, NotFound, HeroPage, FavoritePage } from './pages';
 import { Header } from './components';
 import './App.css';
 
@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HeroPage />} />
         <Route path="/news" element={<NewsPage />} />
+        <Route path="/favorite" element={<FavoritePage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

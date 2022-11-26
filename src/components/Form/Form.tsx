@@ -1,9 +1,10 @@
-import { useForm, Resolver } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { addToPostsResponse } from '../../actions/postsActions';
 import { axios } from '../../helpers';
 import { FormProps } from '../../interfaces/interfaces';
 import { ErrorMessage } from '../Form';
+import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
 type FormValues = {
@@ -16,42 +17,13 @@ type FormValues = {
   news: boolean;
 };
 
-const resolver: Resolver<FormValues> = async (values) => {
-  return {
-    values: values.firstName ? values : {},
-    errors: !values.firstName
-      ? {
-          firstName: {
-            type: 'required',
-          },
-          lastName: {
-            type: 'required',
-          },
-          email: {
-            type: 'required',
-          },
-          userId: {
-            type: 'required',
-          },
-          title: {
-            type: 'required',
-            minLength: 3,
-          },
-          body: {
-            type: 'required',
-          },
-        }
-      : {},
-  };
-};
-
-const Form = ({ handleClose }: FormProps) => {
+const Form: React.FC<FormProps> = ({ handleClose }: FormProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormValues>({ resolver });
+  } = useForm<FormValues>();
 
   const dispatch = useDispatch();
 
@@ -158,10 +130,12 @@ const Form = ({ handleClose }: FormProps) => {
                 border: '2px solid #14213d',
               }}
               type="userId"
-              {...register('userId', { required: true })}
+              {...register('userId', { required: true, minLength: 3 })}
             />
             {errors.userId && (
-              <ErrorMessage>Nickname is a required!</ErrorMessage>
+              <ErrorMessage>
+                Nickname is a required! Min 3 symbols!
+              </ErrorMessage>
             )}
           </label>
         </Box>
@@ -177,7 +151,9 @@ const Form = ({ handleClose }: FormProps) => {
             type="text"
             {...register('title', { required: true, minLength: 3 })}
           />
-          {errors.title && <ErrorMessage>Title is a required!</ErrorMessage>}
+          {errors.title && (
+            <ErrorMessage>Title is a required! Min 3 symbols!</ErrorMessage>
+          )}
         </label>
 
         <label htmlFor="body" style={{ paddingBottom: '10px' }}>
@@ -214,9 +190,9 @@ const Form = ({ handleClose }: FormProps) => {
             flexDirection: { xs: 'column', md: 'row' },
           }}
         >
-          <button
+          <Button
             onClick={handleClose}
-            style={{
+            sx={{
               padding: '10px',
               marginBottom: '10px',
               width: '120px',
@@ -225,13 +201,14 @@ const Form = ({ handleClose }: FormProps) => {
               backgroundColor: '#14213d',
               textDecoration: 'none',
               cursor: 'pointer',
+              '&:hover': { backgroundColor: '#434068' },
             }}
             type="reset"
           >
             Close
-          </button>
-          <button
-            style={{
+          </Button>
+          <Button
+            sx={{
               padding: '10px',
               marginBottom: '10px',
               width: '120px',
@@ -240,11 +217,12 @@ const Form = ({ handleClose }: FormProps) => {
               backgroundColor: '#14213d',
               textDecoration: 'none',
               cursor: 'pointer',
+              '&:hover': { backgroundColor: '#434068' },
             }}
             type="submit"
           >
             Submit
-          </button>
+          </Button>
         </Box>
       </form>
     </Box>

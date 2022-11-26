@@ -1,4 +1,5 @@
 export { PostList } from './PostList';
+export { FavoriteList } from './FavoriteList';
 export { Post } from './Post';
 export { Header } from './Header';
 export { AirButton } from './AirButton';

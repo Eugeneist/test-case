@@ -1,29 +1,22 @@
-import SpeedDial from '@mui/material/SpeedDial';
-import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import { ButtonProps } from '../../interfaces/interfaces';
 
-const AirButton = ({ open }: any) => {
+const AirButton: React.FC<ButtonProps> = ({ open }: ButtonProps) => {
   return (
-    <SpeedDial
+    <Fab
+      color="primary"
       onClick={open}
-      ariaLabel="Add new article"
       sx={{
         position: 'fixed',
         bottom: 16,
         right: 16,
-        '& .MuiFab-primary': {
-          backgroundColor: '#2b2d42',
-          '&:hover': { backgroundColor: '#2b2d42' },
-        },
-        transform: 'translateZ(0px)',
+        backgroundColor: '#2b2d42',
+        '&:hover': { backgroundColor: '#434068' },
       }}
-      icon={
-        <SpeedDialIcon
-          sx={{
-            backgroundColor: '#2b2d42',
-          }}
-        />
-      }
-    ></SpeedDial>
+    >
+      <AddIcon />
+    </Fab>
   );
 };
 

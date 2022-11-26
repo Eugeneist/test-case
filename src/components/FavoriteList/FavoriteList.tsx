@@ -1,26 +1,38 @@
 import { PostListProps } from '../../interfaces/interfaces';
 import { Post } from '../Post';
-import { Loader } from '../Loader';
-import { Error } from '../Error';
 import Table from '@mui/material/Table';
 import TableHead from '@mui/material/TableHead';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-import { useAxiosGet } from '../../hooks';
-import { useAxiosGetProps } from '../../interfaces/interfaces';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import Alert from '@mui/material/Alert';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 
 const PostList: React.FC = () => {
-  const { state, isLoading, error, setLimit, limit }: useAxiosGetProps =
-    useAxiosGet();
+  const favorite = useSelector((state: RootState) => state.favoriteReducer);
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (error) {
-    return <Error />;
+  if (favorite.length === 0) {
+    return (
+      <Container
+        sx={{
+          alignContent: 'center',
+          padding: '10px',
+          height: '100vh',
+          backgroundColor: '#cac5b1',
+        }}
+        maxWidth="lg"
+      >
+        <Stack sx={{ width: '60%', margin: 'auto' }} spacing={2}>
+          <Alert variant="filled" severity="info">
+            You don't have favorite articles!
+          </Alert>
+        </Stack>
+      </Container>
+    );
   }
 
   return (
@@ -37,23 +49,10 @@ const PostList: React.FC = () => {
             }}
           >
             <Typography variant="h6" gutterBottom>
-              Show me
-            </Typography>
-            <input
-              style={{
-                width: '5%',
-                height: '25px',
-                border: '2px solid #14213d',
-              }}
-              value={limit}
-              onChange={(event) => setLimit(event.target.value)}
-              type="number"
-            />
-            <Typography variant="h6" gutterBottom>
-              articles
+              Your favorite articles:
             </Typography>
           </TableHead>
-          {state.map((post: PostListProps) => (
+          {favorite.map((post: PostListProps) => (
             <TableRow
               key={post.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

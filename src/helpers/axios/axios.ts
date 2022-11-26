@@ -1,10 +1,12 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+
+const BASE_URL = 'https://jsonplaceholder.typicode.com';
 
 const instance = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
+  baseURL: BASE_URL,
 });
 
-instance.interceptors.response.use(function (response) {
+instance.interceptors.response.use(function (response: AxiosResponse) {
   return response.data;
 });
 

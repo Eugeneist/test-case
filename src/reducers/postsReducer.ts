@@ -1,4 +1,8 @@
-import { ADD_TO_POSTS, ADD_TO_POSTS_RESPONSE } from '../actionTypes/postsTypes';
+import {
+  ADD_TO_POSTS,
+  ADD_TO_POSTS_RESPONSE,
+  ADD_TO_POSTS_FAILTURE,
+} from '../actionTypes/postsTypes';
 
 const postsList: any = [];
 
@@ -15,6 +19,11 @@ const postsReducer = (state = postsList, action: any) => {
       const data = state.unshift(response);
 
       return [...data];
+    }
+    case ADD_TO_POSTS_FAILTURE: {
+      const error = action.payload;
+
+      return [...error];
     }
     default: {
       return state;

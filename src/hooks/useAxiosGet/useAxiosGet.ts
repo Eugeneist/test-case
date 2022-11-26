@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { axios } from '../../helpers';
+import { AxiosResponse } from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToPosts } from '../../actions/postsActions';
+import { AppDispatch, RootState } from '../../store/store';
 
 const useAxiosGet = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const state = useSelector((state: any) => state.postsReducer);
+  const state = useSelector((state: RootState) => state.postsReducer);
   const [error, setError] = useState();
   const [isLoading, setLoading] = useState(true);
 
@@ -17,8 +19,9 @@ const useAxiosGet = () => {
     setLoading(true);
     axios
       .get(`/posts?_limit=${limit}&_page=${currentPage} `)
-      .then((data: any) => {
+      .then((data: AxiosResponse) => {
         dispatch(addToPosts(data));
+        console.log(data);
       })
       .catch((err) => {
         setError(err);
@@ -28,23 +31,22 @@ const useAxiosGet = () => {
       });
   }, [currentPage, dispatch, limit]);
 
-  const scrollHandler = (e: any) => {
-    if (
-      e.target.documentElement.scrollHeight -
-        (e.target.documentElement.scrollTop + window.innerHeight) <
-      100
-    ) {
-      let nextUpdate = +limit + 5;
-      setLimit(nextUpdate);
-    }
-  };
-
   useEffect(() => {
+    const scrollHandler = (): void => {
+      if (
+        document.documentElement.scrollHeight -
+          (document.documentElement.scrollTop + window.innerHeight) <
+        100
+      ) {
+        let nextUpdate = +limit + 5;
+        setLimit(nextUpdate);
+      }
+    };
     document.addEventListener('scroll', scrollHandler);
     return function () {
       document.removeEventListener('scroll', scrollHandler);
     };
-  }, [scrollHandler]);
+  }, [limit]);
 
   return { state, error, isLoading, setLoading, limit, setLimit };
 };
