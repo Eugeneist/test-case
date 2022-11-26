@@ -21,7 +21,6 @@ const useAxiosGet = () => {
       .get(`/posts?_limit=${limit}&_page=${currentPage} `)
       .then((data: AxiosResponse) => {
         dispatch(addToPosts(data));
-        console.log(data);
       })
       .catch((err) => {
         setError(err);

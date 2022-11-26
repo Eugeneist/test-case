@@ -46,7 +46,9 @@ const PostList: React.FC = () => {
                 border: '2px solid #14213d',
               }}
               value={limit}
-              onChange={(event) => setLimit(event.target.value)}
+              onChange={(event) =>
+                setLimit(limit <= 0 ? 0 : event.target.value)
+              }
               type="number"
             />
             <Typography variant="h6" gutterBottom>
