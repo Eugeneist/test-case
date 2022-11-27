@@ -1,6 +1,5 @@
 {
   "name": "test-case",
-  "homepage": "https://eugeneist.github.io/test-case",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
