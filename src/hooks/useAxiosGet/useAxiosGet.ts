@@ -16,7 +16,6 @@ const useAxiosGet = () => {
   const [limit, setLimit] = useState(10);
 
   useEffect(() => {
-    setLoading(true);
     axios
       .get(`/posts?_limit=${limit}&_page=${currentPage} `)
       .then((data: AxiosResponse) => {
@@ -37,8 +36,7 @@ const useAxiosGet = () => {
           (document.documentElement.scrollTop + window.innerHeight) <
         100
       ) {
-        let nextUpdate = +limit + 5;
-        setLimit(nextUpdate);
+        setLimit((prev) => +prev + 2);
       }
     };
     document.addEventListener('scroll', scrollHandler);

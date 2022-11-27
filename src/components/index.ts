@@ -8,3 +8,4 @@ export { Form } from './Form';
 export { Loader } from './Loader';
 export { Error } from './Error';
 export { ErrorMessage } from './Form';
+export { GoToTopButton } from './GoToTopButton';

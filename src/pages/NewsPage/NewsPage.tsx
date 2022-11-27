@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import Container from '@mui/material/Container';
-import { PostList, ModalComponent, Form } from '../../components';
+import {
+  PostList,
+  ModalComponent,
+  Form,
+  GoToTopButton,
+} from '../../components';
 
 const NewsPage = () => {
   const [open, setOpen] = useState(false);
@@ -20,6 +25,7 @@ const NewsPage = () => {
       >
         <Form handleClose={handleClose} />
       </ModalComponent>
+      <GoToTopButton />
     </Container>
   );
 };

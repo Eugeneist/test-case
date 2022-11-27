@@ -2,6 +2,19 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { NavLink } from 'react-router-dom';
+import { keyframes } from '@emotion/react';
+
+const animation = keyframes`
+0%, 50%, 100% {
+  transform: rotate(0deg);
+}
+10%, 30% {
+  transform: rotate(-10deg);
+}
+20%, 40% {
+  transform: rotate(10deg);
+}
+`;
 
 const HeroPage = () => {
   return (
@@ -46,6 +59,7 @@ const HeroPage = () => {
         <Button
           sx={{
             backgroundColor: '#2b2d42',
+            animation: `1.2s ease-in-out 0s normal none infinite running ${animation}`,
             '&:hover': {
               color: '#b2a997',
               backgroundColor: '#2b2d42',
