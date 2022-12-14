@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/test-case/static/css/main.998f7cd2.css",
-    "main.js": "/test-case/static/js/main.5ac38d08.js",
-    "static/js/787.344e28ff.chunk.js": "/test-case/static/js/787.344e28ff.chunk.js",
-    "index.html": "/test-case/index.html",
-    "main.998f7cd2.css.map": "/test-case/static/css/main.998f7cd2.css.map",
-    "main.5ac38d08.js.map": "/test-case/static/js/main.5ac38d08.js.map",
-    "787.344e28ff.chunk.js.map": "/test-case/static/js/787.344e28ff.chunk.js.map"
+    "main.css": "/typescript-articles-app/static/css/main.998f7cd2.css",
+    "main.js": "/typescript-articles-app/static/js/main.b95fbaa8.js",
+    "static/js/787.6c16b502.chunk.js": "/typescript-articles-app/static/js/787.6c16b502.chunk.js",
+    "index.html": "/typescript-articles-app/index.html",
+    "main.998f7cd2.css.map": "/typescript-articles-app/static/css/main.998f7cd2.css.map",
+    "main.b95fbaa8.js.map": "/typescript-articles-app/static/js/main.b95fbaa8.js.map",
+    "787.6c16b502.chunk.js.map": "/typescript-articles-app/static/js/787.6c16b502.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.998f7cd2.css",
-    "static/js/main.5ac38d08.js"
+    "static/js/main.b95fbaa8.js"
   ]
 }
